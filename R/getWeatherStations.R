@@ -8,10 +8,10 @@
 #' @author Kai Budde
 #' @export getWeatherStations
 #' @import rjson
-#' @import utils
+#' @import tidyverse
 
 # Created:     2019/06/21
-# Last edited: 2022/01/01
+# Last edited: 2025/01/02
 
 getWeatherStations <- function(){
 
@@ -27,29 +27,29 @@ getWeatherStations <- function(){
   website.stations <- json.file$DWDstations
 
   filename.stations <- "DWDstations.txt"
-  column.widths <- c(5, 9, 9, 15, 12, 10, 41, 97)
+  column.widths <- c(5, 9, 9, 15, 12, 10, 42, 41, 857)
 
   # Download file
   download.file(url = website.stations, destfile = filename.stations,
-                method = "auto", quiet = TRUE, mode = "w",
-                cacheOK = TRUE)
+                method = "curl", quiet = TRUE, cacheOK = TRUE)
 
   # Create Data Frame with information
-  df.weather.stations <- read.fwf(
+  df.weather.stations <- readr::read_fwf(
     file = filename.stations,
-    widths = column.widths, skip = 2, fileEncoding = "latin1")
+    col_positions = readr::fwf_widths(column.widths),
+    skip = 2, locale = readr::locale(encoding = "latin1"))
 
   # Get header and insert as column names
   header <- readLines(con = file(filename.stations), n = 1)
   header <- unlist(strsplit(header, split = " "))
   names(df.weather.stations) <- header
 
-  # Delete empty spaces at the beginning/end of the field
-  df.weather.stations[[7]] <- gsub("^ +", "", df.weather.stations[[7]])
-  df.weather.stations[[7]] <- gsub(" +$", "", df.weather.stations[[7]])
-
-  df.weather.stations[[8]] <- gsub("^ +", "", df.weather.stations[[8]])
-  df.weather.stations[[8]] <- gsub(" +$", "", df.weather.stations[[8]])
+  # # Delete empty spaces at the beginning/end of the field
+  # df.weather.stations[[7]] <- gsub("^ +", "", df.weather.stations[[7]])
+  # df.weather.stations[[7]] <- gsub(" +$", "", df.weather.stations[[7]])
+  #
+  # df.weather.stations[[8]] <- gsub("^ +", "", df.weather.stations[[8]])
+  # df.weather.stations[[8]] <- gsub(" +$", "", df.weather.stations[[8]])
 
   # Remove downloaded file
   invisible(file.remove(filename.stations))

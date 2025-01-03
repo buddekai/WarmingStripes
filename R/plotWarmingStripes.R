@@ -21,7 +21,9 @@
 # Created:     2019/07/20
 # Last edited: 2020/04/24
 
-plotWarmingStripes <- function(df, startyear.mean, endyear.mean,
+plotWarmingStripes <- function(df,
+                               startyear.mean,
+                               endyear.mean,
                                style = "continuous",
                                station.name = NULL){
 
@@ -199,7 +201,12 @@ plotWarmingStripes <- function(df, startyear.mean, endyear.mean,
   ggsave(filename = "WarmingStripes.pdf", width = 297,
          height = 210, units = "mm")
   ggsave(filename = "WarmingStripes.png", width = 297,
-         height = 210, units = "mm")
+         height = 210, units = "mm", bg = "white")
+
+  ggsave(filename = "WarmingStripes_medium.pdf", width = 260,
+         height = 110, units = "mm")
+  ggsave(filename = "WarmingStripes_medium.png", width = 260,
+         height = 110, units = "mm", bg = "white")
 
   # Plot connected points
   plot.warmingPoints <-
@@ -227,7 +234,12 @@ plotWarmingStripes <- function(df, startyear.mean, endyear.mean,
   ggsave(filename = "WarmingPoints.pdf", width = 297,
          height = 210, units = "mm")
   ggsave(filename = "WarmingPoints.png", width = 297,
-         height = 210, units = "mm")
+         height = 210, units = "mm", bg = "white")
+
+  ggsave(filename = "WarmingPoints_medium.pdf", width = 260,
+         height = 110, units = "mm")
+  ggsave(filename = "WarmingPoints_medium.png", width = 260,
+         height = 110, units = "mm", bg = "white")
 
   return(plot.warmingStripes)
 

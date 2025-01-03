@@ -188,6 +188,11 @@ plotPrecipitationStripes <- function(df, startyear.mean, endyear.mean,
   ggsave(filename = "PrecipitationStripes.png", width = 297,
          height = 210, units = "mm")
 
+  ggsave(filename = "PrecipitationStripes_medium.pdf", width = 260,
+         height = 110, units = "mm")
+  ggsave(filename = "PrecipitationStripes_medium.png", width = 260,
+         height = 110, units = "mm", bg = "white")
+
   # Plot connected points
   plot.precipitationPoints <-
     ggplot(df.annual, aes(x=year, y=sum)) +
@@ -214,7 +219,12 @@ plotPrecipitationStripes <- function(df, startyear.mean, endyear.mean,
   ggsave(filename = "PrecipitationPoints.pdf", width = 297,
          height = 210, units = "mm")
   ggsave(filename = "PrecipitationPoints.png", width = 297,
-         height = 210, units = "mm")
+         height = 210, units = "mm", bg = "white")
+
+  ggsave(filename = "PrecipitationPoints_medium_medium.pdf", width = 260,
+         height = 110, units = "mm")
+  ggsave(filename = "PrecipitationPoints_medium.png", width = 260,
+         height = 110, units = "mm", bg = "white")
 
   return(plot.precipitationStripes)
 

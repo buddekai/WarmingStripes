@@ -186,7 +186,12 @@ plotSunhoursStripes <- function(df, startyear.mean, endyear.mean,
   ggsave(filename = "SunshineStripes.pdf", width = 297,
          height = 210, units = "mm")
   ggsave(filename = "SunshineStripes.png", width = 297,
-         height = 210, units = "mm")
+         height = 210, units = "mm", bg = "white")
+
+  ggsave(filename = "SunshineStripes_medium.pdf", width = 260,
+         height = 110, units = "mm")
+  ggsave(filename = "SunshineStripes_medium.png", width = 260,
+         height = 110, units = "mm", bg = "white")
 
   # Plot connected points
   plot.sunshinePoints <-
@@ -214,7 +219,12 @@ plotSunhoursStripes <- function(df, startyear.mean, endyear.mean,
   ggsave(filename = "SunshinePoints.pdf", width = 297,
          height = 210, units = "mm")
   ggsave(filename = "SunshinePoints.png", width = 297,
-         height = 210, units = "mm")
+         height = 210, units = "mm", bg = "white")
+
+  ggsave(filename = "SunshinePoints_medium.pdf", width = 260,
+         height = 110, units = "mm")
+  ggsave(filename = "SunshinePoints_medium.png", width = 260,
+         height = 110, units = "mm", bg = "white")
 
   return(plot.sunhoursStripes)
 

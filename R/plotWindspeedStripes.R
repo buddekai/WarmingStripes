@@ -186,7 +186,12 @@ plotWindspeedStripes <- function(df, startyear.mean, endyear.mean,
   ggsave(filename = "WindspeedStripes.pdf", width = 297,
          height = 210, units = "mm")
   ggsave(filename = "WindspeedStripes.png", width = 297,
-         height = 210, units = "mm")
+         height = 210, units = "mm", bg = "white")
+
+  ggsave(filename = "WindspeedStripes_medium.pdf", width = 260,
+         height = 110, units = "mm")
+  ggsave(filename = "WindspeedStripes_medium.png", width = 260,
+         height = 110, units = "mm", bg = "white")
 
   # Plot connected points
   plot.windspeedPoints <-
@@ -214,7 +219,12 @@ plotWindspeedStripes <- function(df, startyear.mean, endyear.mean,
   ggsave(filename = "WindspeedPoints.pdf", width = 297,
          height = 210, units = "mm")
   ggsave(filename = "WindspeedPoints.png", width = 297,
-         height = 210, units = "mm")
+         height = 210, units = "mm", bg = "white")
+
+  ggsave(filename = "WindspeedPoints_medium.pdf", width = 260,
+         height = 110, units = "mm")
+  ggsave(filename = "WindspeedPoints_medium.png", width = 260,
+         height = 110, units = "mm", bg = "white")
 
   return(plot.windspeedStripes)
 

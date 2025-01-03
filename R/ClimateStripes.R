@@ -20,7 +20,7 @@
 #' plot.what == temperature: continuous or ...)
 
 # Created:     2019/06/17
-# Last edited: 2022/01/01
+# Last edited: 2025/01/02
 
 climateStripes <- function(city.name = NULL,
                            weather.station.id = NULL,
@@ -77,9 +77,9 @@ climateStripes <- function(city.name = NULL,
 
   # Download the data files and merge data tables ##########################
 
-  # Paste the correct name of the file
-  # 5 digit number of station
-  weather.station.id <- sprintf("%05d", weather.station.id)
+  # # Paste the correct name of the file
+  # # 5 digit number of station
+  # weather.station.id <- sprintf("%05d", weather.station.id)
 
   # Get the link to the climate data
   json.file <- fromJSON(file = json.file)
@@ -119,8 +119,11 @@ climateStripes <- function(city.name = NULL,
 
   # Yearly mean temperature ###
   if( plot.what == "all" | plot.what == "warmingstripes"){
-    plot <- plotWarmingStripes(df.data, startyear.mean, endyear.mean,
-                               style, station.name)
+    plot <- plotWarmingStripes(df = df.data,
+                               startyear.mean,
+                               endyear.mean,
+                               style,
+                               station.name)
     nothingplotted <- FALSE
   }
 
